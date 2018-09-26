@@ -72,9 +72,46 @@ public class Colosseum {
      *         Implement this function.
      */
     public static Pokemon buildPokemon() {
+        Scanner myScan = new Scanner(System.in);
+
+        System.out.println("Please name your pokemon");
+        String name = myScan.nextLine();
+
+        System.out.println("How many hit points will it have? (1-50)");
+        int hitpoints = myScan.nextInt();
+
+        while(hitpoints > MAX_HIT_POINTS || hitpoints <1) {
+        if (hitpoints > MAX_HIT_POINTS || hitpoints <1 ) {
+        System.out.println("Sorry. Hit points must be between 1 and 50");
+        hitpoints = myScan.nextInt();
+    }
+}
+
+        System.out.println("Split your points between attack level and defense level");
+        int maxAttack = hitpoints;
+        System.out.println("Enter your attack level (1-" + maxAttack + "):");
+        int attack= myScan.nextInt();
+        while(attack > maxAttack || attack < 1) {
+            if (attack > maxAttack || attack < 1) {
+                System.out.println("Sorry. The attack level must be between 1 and" + hitpoints + ".");
+                attack = myScan.nextInt();
+            }
+        }
+      System.out.println(" Enter your defense level (1-" + (hitpoints - attack) + ")");
+        int maxDefense = hitpoints - attack;
+        int defense = myScan.nextInt();
+        while(defense > maxDefense || defense < 1) {
+            if (defense > maxDefense || defense <1) {
+                System.out.println("Sorry. The defense level must be between 1 and" + maxDefense + ".");
+                defense = myScan.nextInt();
+            }
+        }
+
+
         Pokemon tempPokemon = new Pokemon();
         return tempPokemon;
     }
+
 
     /**
      * Prints who is ahead.
@@ -90,7 +127,16 @@ public class Colosseum {
      * Implement this function.
      */
     public static void printWhoIsAhead() {
-        System.out.println("Implement me!");
+    if(firstPokemon.hitPoints > secondPokemon.hitPoints) {
+        System.out.println("Dolphin is currently ahead!");
+    }
+    if(firstPokemon.hitPoints < secondPokemon.hitPoints) {
+        System.out.println("Fire is currently ahead!");
+    }
+    if(firstPokemon.hitPoints == secondPokemon.hitPoints) {
+        System.out.println("It's a tie!");
+    }
+
     }
 
     /**
