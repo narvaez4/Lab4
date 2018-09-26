@@ -88,7 +88,7 @@ public class Colosseum {
 }
 
         System.out.println("Split your points between attack level and defense level");
-        int maxAttack = hitpoints;
+        int maxAttack = hitpoints -1 ;
         System.out.println("Enter your attack level (1-" + maxAttack + "):");
         int attack= myScan.nextInt();
         while(attack > maxAttack || attack < 1) {
@@ -147,7 +147,15 @@ public class Colosseum {
      * Write this function.
      */
     public static void determineWinner() {
-        System.out.println("Implement me!");
+        if(firstPokemon.hitPoints > secondPokemon.hitPoints) {
+            System.out.println("Dolphin is currently ahead!");
+        }
+        if(firstPokemon.hitPoints < secondPokemon.hitPoints) {
+            System.out.println("Fire is currently ahead!");
+        }
+        if(firstPokemon.hitPoints == secondPokemon.hitPoints) {
+            System.out.println("It's a tie!");
+        }
     }
 
     /**
